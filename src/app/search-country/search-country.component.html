@@ -1,0 +1,10 @@
+<md-input-container floatPlaceholder="auto">
+  <input mdInput #c [formControl]="searchControl" type="text" [mdAutocomplete]="auto"
+         placeholder="country to search">
+</md-input-container>
+<md-autocomplete #auto="mdAutocomplete">
+  <md-option *ngFor="let country of filteredOptions | async" [value]="country">
+    {{ country }}
+  </md-option>
+</md-autocomplete>
+<button (click)="searchClickHandler(c.value)" md-button>Search</button>
