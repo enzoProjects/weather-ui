@@ -1,0 +1,4 @@
+<md-input-container floatPlaceholder="auto">
+  <input mdInput type="text" #text placeholder="place to search">
+</md-input-container>
+<button (click)="searchClickHandler(text.value)" md-button>Search</button>

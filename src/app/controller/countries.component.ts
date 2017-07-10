@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
-import {ApiHandlerService} from "../api-handler.service";
+import {ApiHandlerService} from "../service/api-handler.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'countries-view',
-  templateUrl: './countries.component.html'
+  templateUrl: '../view/countries.component.html'
 })
 export class CountriesComponent {
   places: Place[] = [];

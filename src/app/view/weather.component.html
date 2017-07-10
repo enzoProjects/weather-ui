@@ -1,0 +1,7 @@
+<div *ngFor="let forecast of weather.item.forecast">
+  <h1>{{forecast.date}}</h1>
+  <h2>max : {{forecast.high}}</h2>
+  <h2>low : {{forecast.low}}</h2>
+  <h3>{{forecast.text}}</h3>
+  <button md-button #subscribeButton (click)="onClickHandler(weather.woeid)">Subscribe to get news on this</button>
+</div>

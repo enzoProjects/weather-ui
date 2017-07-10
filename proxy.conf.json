@@ -1,9 +1,9 @@
 {
-"/rest": {
-"target": "http://localhost:8080/WeatherChallenge",
-"pathRewrite": {
-"^/rest": ""
-},
-"secure": false
-}
+  "/rest": {
+    "target": "http://localhost:8080",
+    "pathRewrite": {
+      "^/rest": ""
+    },
+    "secure": false
+  }
 }

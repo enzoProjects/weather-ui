@@ -2,9 +2,9 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {SearchCountryComponent} from './search-country/search-country.component';
+import {SearchCountryComponent} from './controller/search-country.component';
 import {HttpModule, RequestOptions, XHRBackend, Http} from "@angular/http";
-import {ApiHandlerService} from "./api-handler.service";
+import {ApiHandlerService} from "./service/api-handler.service";
 import {
   BrowserAnimationsModule,
   NoopAnimationsModule
@@ -19,13 +19,17 @@ import {
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import 'hammerjs';
-import {CountriesComponent} from './countries/countries.component';
+import {CountriesComponent} from './controller/countries.component';
 import {RouterModule, Routes} from '@angular/router';
-import { WeatherComponent } from './weather/weather.component';
+import {WeatherComponent} from './controller/weather.component';
+import {SearchTextComponent} from './controller/search-text.component';
+import {PlacesComponent} from "./controller/places.component";
+import {WeatherSubscriberService} from "./service/weather-subscriber.service";
 
 const appRoutes: Routes = [
   {path: 'search/country', component: SearchCountryComponent},
-  {path: 'search/place', component: SearchCountryComponent},
+  {path: 'search/place', component: SearchTextComponent},
+  {path: 'places/:text', component: PlacesComponent},
   {path: 'country/:country', component: CountriesComponent},
   {path: 'weather/:woeid', component: WeatherComponent}
 
@@ -37,6 +41,8 @@ const appRoutes: Routes = [
     SearchCountryComponent,
     CountriesComponent,
     WeatherComponent,
+    SearchTextComponent,
+    PlacesComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -58,7 +64,7 @@ const appRoutes: Routes = [
     FormsModule,
 
   ],
-  providers: [ApiHandlerService],
+  providers: [ApiHandlerService, WeatherSubscriberService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -10,9 +10,9 @@ import 'rxjs/add/operator/map';
 export class ApiHandlerService {
 
   private ALL_COUNTRIES_ENDPOINT: string = "https://restcountries.eu/rest/v2/all";
-  private BY_COUNTRY_PLACES_ENDPOINT: string = "/rest/place/country/";
-  private BY_TEXT_PLACES_ENDPOINT: string = "/rest/place/text/";
-  private BY_WOEID_WEATHER_ENDPOINT: string = "/rest/weather/woeid/";
+  private BY_COUNTRY_PLACES_ENDPOINT: string = "/rest/WeatherChallenge/api/place/country/";
+  private BY_TEXT_PLACES_ENDPOINT: string = "/rest/WeatherChallenge/api/place/text/";
+  private BY_WOEID_WEATHER_ENDPOINT: string = "/rest/WeatherChallenge/api/weather/woeid/";
 
   constructor(private http: Http) {
   }
@@ -36,7 +36,7 @@ export class ApiHandlerService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  searchPlacesByText(text:string): Observable<any> {
+  searchPlacesByText(text:string): Observable<any[]> {
     const url = `${this.BY_TEXT_PLACES_ENDPOINT}/${text}`;
     return this.http.get(url)
     // ...and calling .json() on the response to return data
