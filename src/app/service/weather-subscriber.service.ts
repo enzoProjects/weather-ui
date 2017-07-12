@@ -1,27 +1,42 @@
-import { Injectable } from '@angular/core';
-import {ApiHandlerService} from "./api-handler.service";
-import {$WebSocket} from 'angular2-websocket/angular2-websocket'
+import {Injectable} from "@angular/core";
+import {$WebSocket} from "angular2-websocket/angular2-websocket";
 
 
 @Injectable()
 export class WeatherSubscriberService {
+  private webSocket: $WebSocket;
 
-  constructor(private api:ApiHandlerService) {
-    var ws = new $WebSocket("ws://localhost:8080/WeatherChallenge/counter");
-    ws.send("Hello");
-    ws.getDataStream().subscribe(
+  public updatePromise: Update = new Update();
+  constructor() {
+  }
+
+  onLoginSucces() {
+    this.webSocket = new $WebSocket("ws://localhost:8080/WeatherChallenge/update");
+    console.debug("begin websocket connection with update");
+  }
+
+  public addWoeid(woeid: string) {
+    this.webSocket.send("{'woeid':" + woeid + ", 'action':'add'}").getDataStream().subscribe(
       res => {
-        var count = JSON.parse(res.data).value;
-        console.log('Got: ' + count);
+        this.updatePromise = new Update(JSON.parse(res.data));
+        console.log('Got: ' + woeid);
       },
-      function(e) { console.log('Error: ' + e.message); },
-      function() { console.log('Completed'); }
+      function (e) {
+        console.log('Error: ' + e.message);
+      },
+      function () {
+        console.log('Completed');
+      }
     );
   }
 
-  subscribe(woeid: string) {
 
+}
+
+export class Update {
+  private woeid: number;
+
+  constructor(woeid: number = 0) {
+    this.woeid = woeid;
   }
-
-
 }

@@ -20,7 +20,7 @@ export class WeatherComponent {
   }
 
   onClickHandler(woeid: string) {
-    this.subscriber.subscribe(woeid);
+    this.subscriber.addWoeid(woeid);
   }
 }
 

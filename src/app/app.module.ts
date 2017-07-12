@@ -1,30 +1,31 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {BrowserModule} from "@angular/platform-browser";
+import {NgModule} from "@angular/core";
 
-import {AppComponent} from './app.component';
-import {SearchCountryComponent} from './controller/search-country.component';
-import {HttpModule, RequestOptions, XHRBackend, Http} from "@angular/http";
+import {AppComponent} from "./app.component";
+import {SearchCountryComponent} from "./controller/search-country.component";
+import {HttpModule} from "@angular/http";
 import {ApiHandlerService} from "./service/api-handler.service";
 import {
   BrowserAnimationsModule,
   NoopAnimationsModule
 } from "@angular/platform-browser/animations";
-import {PortalModule, PlatformModule} from "@angular/cdk";
+import {PlatformModule, PortalModule} from "@angular/cdk";
 import {
+  MdAutocompleteModule,
   MdButtonModule,
   MdCheckboxModule,
-  MdInputModule,
-  MdAutocompleteModule,
   MdCoreModule,
-} from '@angular/material';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import 'hammerjs';
-import {CountriesComponent} from './controller/countries.component';
-import {RouterModule, Routes} from '@angular/router';
-import {WeatherComponent} from './controller/weather.component';
-import {SearchTextComponent} from './controller/search-text.component';
+  MdInputModule
+} from "@angular/material";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import "hammerjs";
+import {CountriesComponent} from "./controller/countries.component";
+import {RouterModule, Routes} from "@angular/router";
+import {WeatherComponent} from "./controller/weather.component";
+import {SearchTextComponent} from "./controller/search-text.component";
 import {PlacesComponent} from "./controller/places.component";
 import {WeatherSubscriberService} from "./service/weather-subscriber.service";
+import {LoginComponent} from "./controller/login.component";
 
 const appRoutes: Routes = [
   {path: 'search/country', component: SearchCountryComponent},
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     CountriesComponent,
     WeatherComponent,
     SearchTextComponent,
-    PlacesComponent
+    PlacesComponent,
+    LoginComponent
   ],
   imports: [
     RouterModule.forRoot(
