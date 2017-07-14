@@ -10,24 +10,13 @@ export class WeatherSubscriberService {
   constructor() {
   }
 
-  onLoginSucces() {
+  onLoginSuccess() {
     this.webSocket = new $WebSocket("ws://localhost:8080/WeatherChallenge/update");
     console.debug("begin websocket connection with update");
   }
 
   public addWoeid(woeid: string) {
-    this.webSocket.send("{'woeid':" + woeid + ", 'action':'add'}").getDataStream().subscribe(
-      res => {
-        this.updatePromise = new Update(JSON.parse(res.data));
-        console.log('Got: ' + woeid);
-      },
-      function (e) {
-        console.log('Error: ' + e.message);
-      },
-      function () {
-        console.log('Completed');
-      }
-    );
+    this.webSocket.send("{'woeid':" + woeid + ", 'action':'add'}").publish().connect();
   }
 
 

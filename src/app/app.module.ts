@@ -9,14 +9,6 @@ import {
   BrowserAnimationsModule,
   NoopAnimationsModule
 } from "@angular/platform-browser/animations";
-import {PlatformModule, PortalModule} from "@angular/cdk";
-import {
-  MdAutocompleteModule,
-  MdButtonModule,
-  MdCheckboxModule,
-  MdCoreModule,
-  MdInputModule
-} from "@angular/material";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import "hammerjs";
 import {CountriesComponent} from "./controller/countries.component";
@@ -26,6 +18,11 @@ import {SearchTextComponent} from "./controller/search-text.component";
 import {PlacesComponent} from "./controller/places.component";
 import {WeatherSubscriberService} from "./service/weather-subscriber.service";
 import {LoginComponent} from "./controller/login.component";
+import {MdAutocompleteModule, MdInputModule} from '@angular/material';
+import {LoginService} from "./service/login.service";
+import {CookieService} from "ng2-cookies";
+
+
 
 const appRoutes: Routes = [
   {path: 'search/country', component: SearchCountryComponent},
@@ -55,18 +52,13 @@ const appRoutes: Routes = [
     HttpModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    PortalModule,
-    MdButtonModule,
-    MdCheckboxModule,
-    MdInputModule,
-    MdAutocompleteModule,
-    MdCoreModule,
-    PlatformModule,
     ReactiveFormsModule,
     FormsModule,
+    MdAutocompleteModule,
+    MdInputModule
 
   ],
-  providers: [ApiHandlerService, WeatherSubscriberService],
+  providers: [ApiHandlerService, WeatherSubscriberService, LoginService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

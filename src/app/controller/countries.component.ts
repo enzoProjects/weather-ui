@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'countries-view',
-  templateUrl: '../view/countries.component.html'
+  templateUrl: '../view/places.component.html'
 })
 export class CountriesComponent {
   places: Place[] = [];

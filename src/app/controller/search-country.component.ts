@@ -16,7 +16,7 @@ export class SearchCountryComponent implements OnInit {
   public searchControl = new FormControl(); // our model driven form
   private countries: string[] = [];
   public filteredOptions: Observable<string[]>;
-  private router:Router
+  private router:Router;
 
   constructor(private api: ApiHandlerService, router: Router) {
     this.router = router;
